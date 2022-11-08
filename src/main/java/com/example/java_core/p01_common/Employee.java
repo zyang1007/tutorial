@@ -1,6 +1,6 @@
 package com.example.java_core.p01_common;
 
-public class Employee {
+public class Employee implements Comparable<Employee>{
     private int id;
     private String name;
     private int age;
@@ -56,5 +56,12 @@ public class Employee {
                 ", age=" + age +
                 ", salary=" + salary +
                 " }";
+    }
+
+    @Override
+    public int compareTo(Employee employee) {
+        if (this.id < employee.id) return -1;
+        else if (this.id == employee.id) return 0;
+        else return 1;
     }
 }
