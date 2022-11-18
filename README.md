@@ -50,5 +50,18 @@ Runnable task = () -> System.out.println("Hi");
 2. `newFixedThreadPool(int nThreads)` - creates a thread pool that reuses a fixed number of threads operating off a shared unbounded queue.
 3. `newSingleThreadExecutor()` - creates an Executor that uses a single worker thread operating off an unbounded queue.
 4. More methods: `defaultThreadFactory()`, `newScheduledThreadPool(int size)`, `callable(Runnable task)`, etc.
+5. Usage example:
+```
+    ExecutorService pool = Executors.newFixedThreadPool(3);
+    try {
+            for (int i = 0; i < 3; i++) {
+                pool.submit(() -> {
+                    System.out.println(Thread.currentThread().getName());
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+```
 
-- Thread Pool - consists of homogenous worker threads that are assigned to execute tasks. Once a worker thread completes its task, it is returned to the pool. Usually, thread pools are bound to a (task)queue from which tasks are dequeued for execution by worker threads. Using a thread pool alleviates from the ails of manual creation of threads.
+- **Thread Pool** - consists of homogenous worker threads that are assigned to execute tasks. Once a worker thread completes its task, it is returned to the pool. Usually, thread pools are bound to a (task)queue from which tasks are dequeued for execution by worker threads. Using a thread pool alleviates from the ails of manual creation of threads.
